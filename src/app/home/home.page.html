@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Talleres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" (click)="goToCrearTaller()">
+    Crear nuevo taller
+  </ion-button>
+
+  <ion-list *ngIf="talleres.length > 0; else sinTalleres">
+    <ion-item *ngFor="let taller of talleres" (click)="goToDetalle(taller.id)">
+      <ion-label>
+        <h2>{{ taller.titulo }}</h2>
+        <p>{{ taller.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinTalleres>
+    <ion-text color="medium">
+      <p class="ion-text-center">Aún no tienes talleres creados.</p>
+    </ion-text>
+  </ng-template>
+
+</ion-content>
